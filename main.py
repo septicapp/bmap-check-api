@@ -10,8 +10,8 @@ GEOJSON_URL = "https://raw.githubusercontent.com/septicapp/bmap-data/main/bmap_z
 @app.route("/check-bmap", methods=["POST"])
 def check_bmap():
     data = request.get_json()
-    lat = data.get("lat")
-    lng = data.get("lng")
+    lat = float(data.get("lat"))
+    lng = float(data.get("lng"))
 
     if lat is None or lng is None:
         return jsonify({"error": "Missing lat or lng"}), 400
